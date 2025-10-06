@@ -10,20 +10,20 @@ services:
     ports:
       - "8069:8069"
     volumes:
-      - ./odoo:/usr/lib/python3/dist-packages/odoo
+      - ./odoo:/opt/odoo-custom
       - ./addons:/mnt/extra-addons
       - odoo-data:/var/lib/odoo
     environment:
       - HOST=db
       - USER=odoo
-      - PASSWORD=.|jC]5=hsrXe+j)5
+      - PASSWORD=odoo_secure_password_123
     restart: unless-stopped
 
   db:
     image: postgres:15
     environment:
       - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=.|jC]5=hsrXe+j)5
+      - POSTGRES_PASSWORD=odoo_secure_password_123
       - POSTGRES_USER=odoo
     volumes:
       - db-data:/var/lib/postgresql/data
