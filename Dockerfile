@@ -1,4 +1,4 @@
-FROM python:3.11-slim-bookworm
+FROM debian:bookworm-slim
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -7,26 +7,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     dirmngr \
     fonts-noto-cjk \
     gnupg \
+    libldap2-dev \
+    libpq-dev \
+    libsasl2-dev \
     libssl-dev \
     node-less \
     npm \
-    python3-num2words \
-    python3-pdfminer \
+    python3 \
+    python3-dev \
     python3-pip \
-    python3-phonenumbers \
-    python3-pyldap \
-    python3-qrcode \
-    python3-renderpm \
-    python3-setuptools \
-    python3-slugify \
-    python3-vobject \
-    python3-watchdog \
-    python3-xlrd \
-    python3-xlwt \
+    python3-wheel \
+    python3-venv \
     xz-utils \
-    libpq-dev \
     gcc \
     g++ \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 # Install wkhtmltopdf
@@ -35,29 +30,41 @@ RUN curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/packaging/releases
     && apt-get install -y --no-install-recommends ./wkhtmltox.deb \
     && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
 
+# Install rtlcss (for RTL support)
+RUN npm install -g rtlcss
+
 # Create odoo user
-RUN useradd -ms /bin/bash odoo
+RUN useradd -m -d /var/lib/odoo -s /bin/bash odoo
 
 # Copy Odoo source
 COPY --chown=odoo:odoo ./odoo /opt/odoo
 
-# Install Python dependencies
-RUN pip3 install --no-cache-dir -r /opt/odoo/requirements.txt
+# Install Python dependencies with proper flags
+WORKDIR /opt/odoo
+RUN pip3 install --no-cache-dir --break-system-packages \
+    wheel setuptools && \
+    pip3 install --no-cache-dir --break-system-packages \
+    -r /opt/odoo/requirements.txt
 
 # Copy custom addons
 COPY --chown=odoo:odoo ./addons /mnt/extra-addons
 
-# Set permissions
-RUN mkdir -p /var/lib/odoo && chown -R odoo:odoo /var/lib/odoo
+# Set proper permissions
+RUN chown -R odoo:odoo /var/lib/odoo /opt/odoo /mnt/extra-addons
 
 # Switch to odoo user
 USER odoo
 
 # Expose Odoo port
-EXPOSE 8069
+EXPOSE 8069 8072
 
 # Set working directory
 WORKDIR /opt/odoo
 
 # Run Odoo
-CMD ["/opt/odoo/odoo-bin", "--addons-path=/opt/odoo/addons,/mnt/extra-addons", "--db_host=db", "--db_user=odoo", "--db_password=odoo_secure_password_123"]
+CMD ["python3", "odoo-bin", \
+     "--addons-path=/opt/odoo/addons,/mnt/extra-addons", \
+     "--db_host=db", \
+     "--db_port=5432", \
+     "--db_user=odoo", \
+     "--db_password=.|jC]5=hsrXe+j)5"]
