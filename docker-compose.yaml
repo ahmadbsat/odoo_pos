@@ -2,9 +2,10 @@ version: '3.8'
 
 services:
   web:
-    image: odoo:18.0
+    image: odoo:17.0
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - "8069:8069"
     volumes:
@@ -13,18 +14,24 @@ services:
     environment:
       - HOST=db
       - USER=odoo
-      - PASSWORD=.|jC]5=hsrXe+j)5  # Set a strong password here
+      - PASSWORD=.|jC]5=hsrXe+j)5
+    command: odoo -d postgres -i base
     restart: always
 
   db:
     image: postgres:15
     environment:
       - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=.|jC]5=hsrXe+j)5  # Same password as above
+      - POSTGRES_PASSWORD=.|jC]5=hsrXe+j)5
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     restart: always
 
 volumes:
