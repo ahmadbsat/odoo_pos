@@ -25,5 +25,4 @@ WORKDIR /opt/odoo-repo
 CMD ["python3", "/usr/bin/odoo-bin", \
      "--addons-path=/usr/lib/python3/dist-packages/odoo/addons,/opt/odoo-repo/addons", \
      "--db_host=db", \
-     "--db_user=odoo", \
-     "--db_password=odoo_secure_password_123"]
+     "--db_user=odoo"]
