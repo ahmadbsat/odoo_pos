@@ -2,10 +2,9 @@ version: '3.8'
 
 services:
   web:
-    image: odoo:17.0
+    image: odoo:18.0
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     ports:
       - "8069:8069"
     volumes:
@@ -15,7 +14,8 @@ services:
       - HOST=db
       - USER=odoo
       - PASSWORD=.|jC]5=hsrXe+j)5
-    command: odoo -d postgres -i base
+      - POSTGRES_DB=postgres
+    user: root  # This fixes the permission issue
     restart: always
 
   db:
@@ -27,11 +27,6 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U odoo"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
     restart: always
 
 volumes:
