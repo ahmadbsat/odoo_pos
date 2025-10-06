@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: odoo:18.0  # Change to your Odoo version (16.0, 17.0, etc.)
+    image: odoo:18.0
     depends_on:
       - db
     ports:
@@ -13,15 +13,14 @@ services:
     environment:
       - HOST=db
       - USER=odoo
-      - PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=postgres
+      - PASSWORD=.|jC]5=hsrXe+j)5  # Set a strong password here
     restart: always
 
   db:
     image: postgres:15
     environment:
       - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_PASSWORD=.|jC]5=hsrXe+j)5  # Same password as above
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
