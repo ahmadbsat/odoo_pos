@@ -2,33 +2,33 @@ version: '3.8'
 
 services:
   web:
-    image: odoo:18
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - db
     ports:
       - "8069:8069"
     volumes:
+      - ./odoo:/opt/odoo
       - ./addons:/mnt/extra-addons
-      - odoo-web-data:/var/lib/odoo
+      - odoo-data:/var/lib/odoo
     environment:
       - HOST=db
       - USER=odoo
-      - PASSWORD=.|jC]5=hsrXe+j)5
-      - POSTGRES_DB=postgres
-    user: root  # This fixes the permission issue
-    restart: always
+      - PASSWORD=odoo_secure_password_123
+    restart: unless-stopped
 
   db:
     image: postgres:15
     environment:
       - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=.|jC]5=hsrXe+j)5
+      - POSTGRES_PASSWORD=odoo_secure_password_123
       - POSTGRES_USER=odoo
-      - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - odoo-db-data:/var/lib/postgresql/data/pgdata
-    restart: always
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
 
 volumes:
-  odoo-web-data:
-  odoo-db-data:
+  odoo-data:
+  db-data:
