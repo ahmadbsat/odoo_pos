@@ -23,4 +23,4 @@ CMD ["python3", "/opt/odoo-custom/odoo-bin", \
      "--db_host=db", \
      "--db_port=5432", \
      "--db_user=odoo", \
-     "--db_password=.|jC]5=hsrXe+j)5"]
+     "--db_password=odoo_secure_password_123"]
