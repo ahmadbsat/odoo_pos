@@ -1,12 +1,21 @@
-<div t-esc=" props.data.name " style="font-size: 20px !important;font-weight: bold; " />
-<template id="custom_pos_receipt" inherit_id="point_of_sale.OrderReceipt">
-    <xpath expr="//OrderWidget" position="before">
-        <div class="pos-receipt-order-data custom-order-info">
-            <div t-esc=" props.data.name " style="font-size: 20px !important;font-weight: bold; " />
-            <div>Ahmad Bsat</div>
-            <div id="order-date" t-esc="props.data.date" />
-        </div>
-  </xpath>
-    <xpath expr="//div[t-esc=' props.data.name ']/.." position="replace">
-    </xpath>
-</template>
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    
+    <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension">
+        
+        <!-- Replace the order name with custom styling -->
+        <xpath expr="//div[hasclass('pos-receipt-order-data')]" position="replace">
+            <div class="pos-receipt-order-data custom-order-info">
+                <div style="font-size: 24px; font-weight: bold; text-align: center;">
+                    <t t-esc="props.data.name"/>
+                </div>
+                <div style="font-size: 18px; text-align: center;">Ahmad Bsat</div>
+                <div style="text-align: center;">
+                    <t t-esc="props.data.date"/>
+                </div>
+            </div>
+        </xpath>
+        
+    </t>
+    
+</templates>
