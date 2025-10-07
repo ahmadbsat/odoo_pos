@@ -18,10 +18,8 @@ USER odoo
 
 WORKDIR /opt/odoo-repo
 
-# Set admin password via environment variable
-ENV ODOO_MASTER_PASSWD=admin123
-
 CMD ["python3", "/usr/bin/odoo-bin", \
      "--addons-path=/usr/lib/python3/dist-packages/odoo/addons,/opt/odoo-repo/addons", \
      "--db_host=db", \
-     "--db_user=odoo"]
+     "--db_user=odoo", \
+     "--db_password=mySecurePassword123"]
