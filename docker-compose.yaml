@@ -16,14 +16,14 @@ services:
     environment:
       - HOST=db
       - USER=odoo
-      - PASSWORD=odoo_secure_password_123
+      - PASSWORD=mySecurePassword123
     restart: unless-stopped
 
   db:
     image: postgres:15
     environment:
       - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=odoo_secure_password_123
+      - POSTGRES_PASSWORD=mySecurePassword123
       - POSTGRES_USER=odoo
     volumes:
       - db-data:/var/lib/postgresql/data
