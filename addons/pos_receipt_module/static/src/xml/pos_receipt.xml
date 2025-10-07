@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    
+    <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension">
+        
+        <!-- Override the header -->
+        <xpath expr="//div[hasclass('pos-receipt-header')]" position="attributes">
+            <attribute name="style">font-size: 28px;</attribute>
+        </xpath>
+        
+    </t>
+    
+</templates>
