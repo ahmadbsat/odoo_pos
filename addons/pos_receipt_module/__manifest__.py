@@ -1,6 +1,6 @@
 {
     'name': 'POS Custom Receipt',
-    'version': '1.0.0',
+    'version': '1.0.3',
     'category': 'Point of Sale',
     'summary': 'Customize POS receipt header',
     'depends': ['point_of_sale'],
