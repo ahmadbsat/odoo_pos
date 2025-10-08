@@ -10,9 +10,7 @@
     'author': 'Your Name',
     'website': 'https://www.yourwebsite.com',
     'depends': ['point_of_sale'],
-    'data': [
-        'views/assets.xml',
-    ],
+    'data': [],
     'assets': {
         'point_of_sale._assets_pos': [
             'pos_receipt_font_size/static/src/css/pos_receipt.css',
