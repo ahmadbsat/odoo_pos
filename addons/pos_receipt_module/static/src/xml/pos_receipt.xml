@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
-    <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension">     
-        <xpath expr="//div[@class='pos-receipt']" position="inside">
-            <style>
-                .pos-receipt-order-data {
-                    font-size: 18px !important;
-                    text-align: center !important;
-                }
-                .order-number {
-                    font-size: 48px !important;
-                    font-weight: bold !important;
-                }
-                .pos-receipt-header {
-                    font-size: 24px !important;
-                    font-weight: bold !important;
-                }
-            </style>
+    <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension">
+        <!-- Just add a custom message, styling is in CSS -->
+        <xpath expr="//div[hasclass('pos-receipt-order-data')]" position="before">
+            <div class="custom-header" style="text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 10px;">
+                Ahmad Bsat
+            </div>
         </xpath>
     </t>
 </templates>
