@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template id="custom_pos_receipt" inherit_id="point_of_sale.pos_template">
-    <xpath expr="//div[hasclass('receipt-order')]" position="before">
-        <div class="receipt-order-number" style="font-size: 20px; text-align: center; margin-bottom: 10px;">
-            Order Ahmad: <t t-esc="order.name"/>
-        </div>
-    </xpath>
-</template>
+<templates id="template" xml:space="preserve">
+    <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension">     
+        <xpath expr="//div[@class='pos-receipt']" position="inside">
+            <style>
+                .pos-receipt-order-data {
+                    font-size: 18px !important;
+                    text-align: center !important;
+                }
+                .order-number {
+                    font-size: 48px !important;
+                    font-weight: bold !important;
+                }
+                .pos-receipt-header {
+                    font-size: 24px !important;
+                    font-weight: bold !important;
+                }
+            </style>
+        </xpath>
+    </t>
+</templates>
