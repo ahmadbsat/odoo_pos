@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml version="1.0" encoding="UTF-8"?>
 <template id="custom_pos_receipt" inherit_id="point_of_sale.pos_template">
     <xpath expr="//div[hasclass('receipt-order')]" position="before">
         <div class="receipt-order-number" style="font-size: 20px; text-align: center; margin-bottom: 10px;">
