@@ -3,34 +3,41 @@
 /* Main receipt container */
 .pos-receipt {
     font-size: 16px !important;
+    text-decoration: underline
 }
 
 /* Receipt header - Company name, address */
 .pos-receipt-header {
     font-size: 18px !important;
+    text-decoration: underline
 }
 
 .pos-receipt-header .pos-receipt-company-name {
     font-size: 22px !important;
     font-weight: bold !important;
+    text-decoration: underline
 }
 
 /* Order lines - Product names and prices */
 .pos-receipt-orderlines {
     font-size: 16px !important;
+    text-decoration: underline
 }
 
 .pos-receipt-orderline .pos-receipt-left-align {
     font-size: 16px !important;
+    text-decoration: underline
 }
 
 .pos-receipt-orderline .pos-receipt-right-align {
     font-size: 16px !important;
+    text-decoration: underline
 }
 
 /* Product name */
 .pos-receipt-orderline-name {
     font-size: 17px !important;
+    text-decoration: underline
     font-weight: 500 !important;
 }
 
@@ -48,53 +55,64 @@
 /* Payment lines */
 .pos-payment-name {
     font-size: 16px !important;
+    text-decoration: underline
 }
 
 /* Change */
 .pos-receipt-change {
     font-size: 18px !important;
     font-weight: bold !important;
+    text-decoration: underline
 }
 
 /* Footer - Thank you message, barcode, etc. */
 .pos-receipt-footer {
     font-size: 14px !important;
+text-decoration: underline
 }
 
 /* Date and time */
 .pos-receipt-contact {
     font-size: 14px !important;
+text-decoration: underline
 }
 
 /* Subtotal, tax, discount labels */
 .pos-receipt-label {
     font-size: 15px !important;
+text-decoration: underline
 }
 
 /* Customer name */
 .pos-receipt-customer-name {
     font-size: 17px !important;
     font-weight: 600 !important;
+    text-decoration: underline
 }
 
 /* Print preview adjustments */
 @media print {
     .pos-receipt {
         font-size: 14px !important;
+        text-decoration: underline
     }
     
     .pos-receipt-company-name {
         font-size: 20px !important;
+        text-decoration: underline
     }
     
     .pos-receipt-amount-total {
         font-size: 18px !important;
+        text-decoration: underline
+        
     }
 }
 
 /* For thermal printer receipts (80mm) */
 .pos-receipt-container {
     font-size: 16px !important;
+    text-decoration: underline
 }
 
 /* Adjust these values as needed:
