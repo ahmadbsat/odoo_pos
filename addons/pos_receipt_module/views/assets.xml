@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <template id="assets" inherit_id="point_of_sale.assets">
-        <xpath expr="." position="inside">
-            <link rel="stylesheet" type="text/css" href="/pos_receipt_font_size/static/src/css/pos_receipt.css"/>
-        </xpath>
-    </template>
-</odoo>
+
