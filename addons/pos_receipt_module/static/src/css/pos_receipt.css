@@ -1,19 +1,16 @@
+.custom-receipt-header {
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
 .pos-receipt-order-data {
-    font-size: 18px !important;
+    font-size: 16px !important;
     text-align: center !important;
 }
 
 .order-number {
-    font-size: 48px !important;
+    font-size: 56px !important;
     font-weight: bold !important;
-}
-
-.pos-receipt-header {
-    font-size: 24px !important;
-    font-weight: bold !important;
-}
-
-.receipt-company {
-    font-size: 28px !important;
-    font-weight: bold !important;
+    text-align: center !important;
 }
