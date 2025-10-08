@@ -1,21 +1,21 @@
 {
-    'name': 'POS Custom Receipt',
-    'version': '18.0.1.0.0',
+    'name': 'POS Receipt Font Size',
+    'version': '1.0.0',
     'category': 'Point of Sale',
-    'summary': 'Customize POS receipt header',
+    'summary': 'Increase font size in POS receipts',
     'description': """
-        Custom POS Receipt
-        ==================
-        * Custom header with company name
-        * Larger order numbers
-        * Custom styling
+        This module increases the font size in Point of Sale receipts
+        for better readability.
     """,
     'author': 'Your Name',
+    'website': 'https://www.yourwebsite.com',
     'depends': ['point_of_sale'],
+    'data': [
+        'views/assets.xml',
+    ],
     'assets': {
         'point_of_sale._assets_pos': [
-            'pos_receipt_module/static/src/xml/pos_receipt.xml',
-            'pos_receipt_module/static/src/css/pos_receipt.css',
+            'pos_receipt_font_size/static/src/css/pos_receipt.css',
         ],
     },
     'installable': True,
